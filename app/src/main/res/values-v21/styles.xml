@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/color_theme</item><!--颜色初色-->
+        <item name="colorAccent">@color/color_theme</item><!--颜色重色-->
+        <item name="android:colorPrimaryDark">#555555</item>
+        <item name="android:textColorPrimary">#4E4E4E</item><!--主要文本颜色-->
+        <item name="android:textColorSecondary">#CECECE</item><!--文本颜色辅助-->
+        <item name="android:windowBackground">@android:color/white</item><!--背景透明-->
+
+    </style>
+</resources>

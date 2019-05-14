@@ -1,0 +1,254 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+android {
+    compileSdkVersion 28
+    buildToolsVersion = '28.0.3'
+    android { compileOptions.encoding = "UTF-8" }
+    defaultConfig {
+        applicationId "com.example"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        resConfigs "zh"
+        ndk {//设置支持的SO库架构
+            abiFilters 'armeabi', 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+        }
+    }
+
+    greendao {
+        schemaVersion 3
+        daoPackage 'com.example.android.base.dao'  //包名
+        targetGenDir 'src/main/java'   //目录文件夹
+    }
+
+    signingConfigs {
+        debug{
+            keyAlias 'Android'
+            keyPassword '883324'
+            storeFile file('../key.jks') //到时候换
+            storePassword '883324'
+        }
+        release {
+            keyAlias 'Android'
+            keyPassword '883324'
+            storeFile file('../key.jks') //到时候换
+            storePassword '883324'
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            signingConfig signingConfigs.debug
+            debuggable true
+            zipAlignEnabled false
+        }
+    }
+
+
+
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+
+    //xml 新建文件夹
+    def listSubFile = {
+        def resFolder = 'src/main/res/layout'
+        def files = file(resFolder).listFiles()
+        def folders = []
+        files.each {
+            item -> folders.add(item.absolutePath)
+        }
+        folders.add(file(resFolder).parentFile.absolutePath)
+        return folders
+    }
+    sourceSets {
+        main {
+            res.srcDirs = listSubFile()
+        }
+    }
+
+}
+
+
+
+
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    api 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    /**  基础库  */
+    api 'com.android.support:support-v4:28.+'
+    api 'com.android.support:support-v13:28.+'
+    api 'com.android.support:support-annotations:28.+'
+    api 'com.android.support:appcompat-v7:28.+'
+    api 'com.android.support:design:28.+'
+    api 'com.android.support:recyclerview-v7:28.+'
+    api 'com.android.support:cardview-v7:28+'
+
+    /**腾讯WebViewx5内核*/
+    implementation files('libs/tbs_sdk_thirdapp_sharewithdownload_withoutGame_obfs.jar')
+
+    /**友盟分享*/
+    api files('libs/SocialSDK_QQ_Simplify.jar')
+    api files('libs/SocialSDK_Sina_Simplify.jar')
+    api files('libs/SocialSDK_WeChat_Simplify.jar')
+    api files('libs/umeng_shareboard_widget.jar')
+    api files('libs/umeng_social_api.jar')
+    api files('libs/umeng_social_net.jar')
+    api files('libs/umeng_social_shareboard.jar')
+    api files('libs/umeng_social_shareview.jar')
+    api files('libs/umeng_social_tool.jar')
+    api files('libs/umeng-common-1.4.4.jar')
+
+    /** 支付*/
+
+    //微信支付
+    api 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+    //支付宝支付
+    implementation files('libs/alipaySdk-20180601.jar')
+    /**  联网框架 */
+
+    //RxJava2.0所需依赖
+    api 'io.reactivex.rxjava2:rxjava:2.1.3'
+
+    //Rxandroid2.0线程调度依赖
+    api 'io.reactivex.rxjava2:rxandroid:2.0.1'
+
+    //这个库可以支持到rxjava2.X
+    api 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
+
+    //Retrofit2.0所需依赖
+    api 'com.squareup.retrofit2:retrofit:2.3.0'
+
+    //结果转为实体类所需依赖
+    api 'com.squareup.retrofit2:converter-gson:2.3.0'
+
+    //OKHttp3.0依赖
+    api 'com.squareup.okhttp3:okhttp:3.9.1'
+
+    //OKHttp优化策略依赖
+    api 'com.squareup.okhttp3:logging-interceptor:3.9.0'
+
+    //结果转为基本类型所需依赖
+    api 'com.squareup.retrofit2:converter-scalars:2.3.0'
+
+    //处理rxjava内存泄漏,基础组件
+    api 'com.trello.rxlifecycle2:rxlifecycle:2.0.1'
+
+    //如果你想绑定到Android特定的生命周期
+    api 'com.trello.rxlifecycle2:rxlifecycle-android:2.0.1'
+
+    //如果你想要预先写好的Activities和Fragments，你可以作为提供者的子类
+    api 'com.trello.rxlifecycle2:rxlifecycle-components:2.0.1'
+
+    /**  必依赖的库 */
+
+    //64K
+    api 'com.android.support:multidex:1.0.0'
+
+    //黄油刀
+    api 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
+    //eventbus
+    api 'org.greenrobot:eventbus:3.0.0'
+
+    //屏幕适配
+    api 'me.jessyan:autosize:0.9.5'
+
+    //动态权限申请工具
+    api 'com.github.tbruyelle:rxpermissions:0.10.2'
+
+    //greendao数据库
+    api 'org.greenrobot:greendao:3.0.1'
+    api 'org.greenrobot:greendao-generator:3.0.0'
+
+    /**  扩展库 */
+    /*toast*/
+    api 'com.github.GrenderG:Toasty:1.2.8'
+
+
+    //加载对话框
+    api 'com.wang.avi:library:2.1.3'
+
+    
+    //工具类
+    api 'com.blankj:utilcode:1.15.1'
+
+    //上拉下拉刷新
+    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1'
+
+    //图片选择，剪裁，照相,9宫格
+    api 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.3'
+
+    //SuperTextView 常见控件UI基本都能满足  包括圆形图片
+    api 'com.github.lygttpod:SuperTextView:2.1.8'
+    // api 'com.github.chenBingX:SuperTextView:v3.0.0'
+
+    //轮播图
+    api 'com.youth.banner:banner:1.4.10'
+
+    //tablayout
+    api 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+
+    //城市选择器
+    api 'com.contrarywind:Android-PickerView:4.1.4'
+
+    //仿IOS弹框
+    api 'com.bigkoo:alertview:1.0.3'
+
+
+    //通用的baseAdapter
+    // api 'com.zhy:base-rvadapter:3.0.3'
+    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.44'
+
+
+    //json解析
+    api 'com.alibaba:fastjson:1.2.54'
+
+    //沉侵式状态栏
+    api 'com.gyf.immersionbar:immersionbar:2.3.3-beta15'
+
+    /*底部菜单*/
+    api 'com.roughike:bottom-bar:2.3.1'
+
+    /*9宫格手势图片查看器*/
+    api 'com.github.chrisbanes.photoview:library:1.2.4'
+
+    //图片加载进度条
+    implementation 'com.sunfusheng:GlideImageView:2.0.0'
+
+    /*搜索带历史框   activity 看 demo  fragment 可直接用  */
+    // api 'com.wenwenwen888:searchbox:1.0.0'
+
+    /**圆形进度条*/
+    //  api 'com.github.lzyzsd:circleprogress:1.2.1'
+
+    /*应用介绍页,可以滑动*/
+    //  api 'com.github.apl-devs:appintro:v4.2.3'
+
+    /*滚动条*/
+    //  api 'com.xw.repo:bubbleseekbar:3.16'
+
+    //自定义dialog广告弹窗(加特效)
+    //compile 'cn.yipianfengye.android:ad-library:1.0'
+}

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_pic"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/img_net_connect_fail" />
+
+        <TextView
+
+            android:id="@+id/tv_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:padding="4dp"
+            android:text="暂时无数据,请重新加载!"
+            android:textColor="@color/color_text_gray_A4A5A9"
+            android:textSize="14dp" />
+
+
+        <com.allen.library.SuperButton xmlns:stv="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/tv_retry"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="4dp"
+
+            android:paddingRight="20dp"
+            android:paddingBottom="4dp"
+            android:text="重新加载"
+            android:textSize="14dp"
+            stv:sCornersRadius="5dp"
+            stv:sSolidColor="@color/white"
+            stv:sStrokeColor="#8a8a8a"
+            stv:sStrokeWidth="0.1dp" />
+    </LinearLayout>
+</RelativeLayout>

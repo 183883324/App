@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        id="@+id/tab_1"
+        icon="@drawable/selector_home_tab_message"
+        title="消息" />
+    <tab
+        id="@+id/tab_2"
+        icon="@drawable/selector_home_tab_calendar"
+        title="日程" />
+    <tab
+        id="@+id/tab_3"
+        icon="@drawable/selector_home_tab_work"
+        title="工作" />
+    <tab
+        id="@+id/tab_4"
+        icon="@drawable/selector_home_tab_news"
+        title="新闻" />
+    <tab
+        id="@+id/tab_5"
+        icon="@drawable/selector_home_tab_user"
+        title="我的" />
+</tabs>

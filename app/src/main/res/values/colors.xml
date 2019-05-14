@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="background_color">#ECECEC</color><!--背景颜色-->
+    <color name="transparent90">#E5ffffff</color>
+
+
+    <!--透明色-->
+    <color name="transparentt">#00000000</color>  //全透明
+    <color name="hstransparentt">#30000000</color>  //灰色半透明
+
+    <!--通用-->
+    <color name="color_text_black_2B2B2B">#2B2B2B</color>
+    <color name="color_text_black_343841">#343841</color>
+    <color name="color_text_black_555555">#555555</color>
+    <color name="color_text_black_666666">#666666</color>
+    <color name="color_text_gray_818181">#818181</color>
+    <color name="color_text_gray_8a8a8a">#8a8a8a</color>
+    <color name="color_text_gray_999999">#999999</color>
+    <color name="color_text_gray_9B9B9B">#9B9B9B</color>
+    <color name="color_text_gray_A4A5A9">#A4A5A9</color>
+    <color name="color_text_gray_B4B4B4">#B4B4B4</color>
+    <color name="color_text_red_E10601">#E10601</color>
+    <color name="color_text_green_32CD32">#32CD32</color>
+    <color name="color_text_orange_FFC125">#FFC125</color>
+    <color name="color_text_white_F0FFFF">#F0FFFF</color>
+    <color name="gray">#20000000</color>
+    <color name="color_border_D8D9D9">#D8D9D9</color>
+    <color name="placeholder">#33000000</color>
+    <color name="color_base_bg">#EBEBEB</color>
+    <color name="color_separator">#EBEBEB</color>
+    <color name="color_theme">#3597F2</color>
+    <!--通用按钮-->
+    <color name="color_button_solid">#F7F7F7</color>
+    <color name="color_button_stroke">#D8D8D8</color>
+    <!--baseactivity标题栏-->
+    <color name="color_titlebar">@color/color_theme</color>
+    <color name="color_titlebar_text_color">@android:color/white</color>
+</resources>
